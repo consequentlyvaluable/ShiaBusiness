@@ -472,6 +472,10 @@ textarea:focus-visible {
   box-shadow: 0 18px 30px -16px rgba(20, 184, 166, 0.75);
 }
 
+#toggleFormButton {
+  color: #ffffff;
+}
+
 .btn--primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 22px 36px -18px rgba(245, 158, 11, 0.7);
