@@ -13,6 +13,8 @@ const businessForm = document.querySelector("#businessForm");
 const submitButton = businessForm.querySelector('[type="submit"]');
 const categoryOptionsList = document.querySelector("#categoryOptions");
 const copyrightYearEl = document.querySelector("#copyrightYear");
+const businessCountEl = document.querySelector("#businessCount");
+const categoryCountEl = document.querySelector("#categoryCount");
 const locationInput = businessForm?.querySelector('input[name="location"]');
 const nameInput = businessForm?.querySelector('input[name="name"]');
 
@@ -122,9 +124,7 @@ const setStatusMessage = (message, { variant } = {}) => {
   }
 };
 
-const updateCategoryOptions = () => {
-  if (!categoryOptionsList) return;
-
+const getUniqueCategories = () => {
   const seen = new Set();
   const options = [];
 
@@ -139,6 +139,24 @@ const updateCategoryOptions = () => {
     options.push(value);
   });
 
+  return options.sort((first, second) => first.localeCompare(second));
+};
+
+const updateDirectoryStats = () => {
+  if (businessCountEl) {
+    businessCountEl.textContent = businesses.length.toLocaleString();
+  }
+
+  if (categoryCountEl) {
+    categoryCountEl.textContent = getUniqueCategories().length.toLocaleString();
+  }
+};
+
+const updateCategoryOptions = () => {
+  if (!categoryOptionsList) return;
+
+  const options = getUniqueCategories();
+
   categoryOptionsList.innerHTML = "";
 
   options.forEach((optionValue) => {
@@ -149,6 +167,7 @@ const updateCategoryOptions = () => {
 };
 
 const renderBusinesses = (items) => {
+  updateDirectoryStats();
   closePopover();
   businessListEl.innerHTML = "";
 
