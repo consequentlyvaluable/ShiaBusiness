@@ -162,7 +162,7 @@ textarea {
   place-items: center;
   border-radius: 0.85rem;
   background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  color: #06111f;
+  color: #f0ead6;
   font-size: 0.78rem;
   box-shadow: 0 12px 24px rgba(20, 184, 166, 0.28);
 }
