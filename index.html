@@ -9,7 +9,12 @@
   </head>
   <body>
     <header class="hero">
-      <div class="hero__top">
+      <nav class="hero__nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Shia Business Directory home">
+          <span class="brand__mark" aria-hidden="true">SBD</span>
+          <span class="brand__text">Shia Business Directory</span>
+        </a>
+
         <label class="theme-switch" for="theme-toggle">
           <span class="theme-switch__sr">Toggle light mode</span>
           <input type="checkbox" id="theme-toggle" aria-label="Toggle light mode" />
@@ -19,34 +24,62 @@
             <span class="theme-switch__icon theme-switch__icon--moon">🌙</span>
           </span>
         </label>
-      </div>
+      </nav>
 
-      <div class="hero__content">
-        <h1 class="hero__title">Shia Business Directory</h1>
-
-        <button id="toggleFormButton" class="btn btn--primary">Add a Business</button>
+      <div id="top" class="hero__content">
+        <p class="hero__eyebrow">Community marketplace</p>
+        <h1 class="hero__title">Discover and support trusted Shia-owned businesses.</h1>
+        <p class="hero__subtitle">
+          A polished directory for finding local services, shops, and professionals in your community.
+        </p>
+        <div class="hero__actions" aria-label="Directory actions">
+          <button id="toggleFormButton" class="btn btn--primary" aria-expanded="false">Add a Business</button>
+          <a class="btn btn--secondary" href="#directory">Browse Directory</a>
+        </div>
+        <dl class="hero__stats" aria-label="Directory highlights">
+          <div class="hero__stat">
+            <dt id="businessCount">0</dt>
+            <dd>Businesses listed</dd>
+          </div>
+          <div class="hero__stat">
+            <dt id="categoryCount">0</dt>
+            <dd>Categories represented</dd>
+          </div>
+          <div class="hero__stat">
+            <dt>24/7</dt>
+            <dd>Search availability</dd>
+          </div>
+        </dl>
       </div>
     </header>
 
     <main class="container">
-      <section class="search">
-        <label for="searchInput" class="search__label">Search the directory</label>
+      <section class="search" aria-labelledby="searchTitle">
+        <div>
+          <p class="section__eyebrow">Find a business</p>
+          <h2 id="searchTitle" class="search__title">Search the directory</h2>
+        </div>
+        <label for="searchInput" class="search__label">Search by name, category, or location</label>
         <input
           type="search"
           id="searchInput"
           class="search__input"
-          placeholder="Search by name, category, or location"
+          placeholder="Try “catering”, “law”, or “Dearborn”"
           autocomplete="off"
         />
       </section>
 
       <section id="formSection" class="form form--hidden" aria-hidden="true">
-        <h2 class="form__title">Add a new business</h2>
+        <div class="form__header">
+          <p class="section__eyebrow">Grow the network</p>
+          <h2 class="form__title">Add a new business</h2>
+          <p class="form__intro">Submit clear, useful details so community members can find the right provider quickly.</p>
+        </div>
         <form id="businessForm" novalidate>
           <div class="form__grid">
             <label class="form__field">
               <span>Name*</span>
-              <input type="text" name="name" required placeholder="Business Name" />
+              <input type="text" name="name" required placeholder="Business name" />
             </label>
             <label class="form__field">
               <span>Category*</span>
@@ -55,7 +88,7 @@
                 name="category"
                 list="categoryOptions"
                 required
-                placeholder="What do they do?"
+                placeholder="Service or industry"
                 autocomplete="off"
               />
               <datalist id="categoryOptions"></datalist>
@@ -66,7 +99,7 @@
                 type="text"
                 name="location"
                 required
-                placeholder="Where are they?"
+                placeholder="City, state, or address"
                 autocomplete="off"
               />
             </label>
@@ -74,8 +107,8 @@
               <span>Description</span>
               <textarea
                 name="description"
-                rows="3"
-                placeholder="Tell folks why this biz is special"
+                rows="4"
+                placeholder="Briefly describe services, specialties, or contact guidance."
               ></textarea>
             </label>
           </div>
@@ -86,8 +119,14 @@
         </form>
       </section>
 
-      <section>
-        <h2 class="section__title">Business Directory</h2>
+      <section id="directory" class="directory" aria-labelledby="directoryTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section__eyebrow">Explore listings</p>
+            <h2 id="directoryTitle" class="section__title">Business Directory</h2>
+          </div>
+          <p class="section-heading__meta">Tap any listing for full details.</p>
+        </div>
         <p id="statusMessage" class="status-message" hidden></p>
         <div id="businessList" class="businesses" role="list"></div>
         <p id="emptyState" class="empty-state" hidden>
