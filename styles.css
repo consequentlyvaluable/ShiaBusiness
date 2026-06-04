@@ -2,6 +2,7 @@
   --color-primary: #14b8a6;
   --color-primary-dark: #0f766e;
   --color-accent: #f59e0b;
+  --color-purple-text: #a855f7;
   --color-bg: #07111f;
   --color-surface: rgba(15, 23, 42, 0.76);
   --color-card-bg: rgba(15, 23, 42, 0.88);
@@ -21,6 +22,7 @@
   --color-primary: #0f766e;
   --color-primary-dark: #115e59;
   --color-accent: #94a3b8;
+  --color-purple-text: #7c3aed;
   --color-bg: #f6f8fb;
   --color-surface: rgba(255, 255, 255, 0.86);
   --color-card-bg: rgba(255, 255, 255, 0.96);
@@ -148,6 +150,7 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
+  color: var(--color-purple-text);
   font-weight: 800;
   letter-spacing: -0.02em;
 }
@@ -340,6 +343,7 @@ textarea:focus-visible {
 .form__title,
 .section__title {
   margin: 0.25rem 0 0;
+  color: var(--color-purple-text);
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   letter-spacing: -0.04em;
 }
@@ -464,7 +468,7 @@ textarea:focus-visible {
 
 .btn--primary {
   background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  color: #06111f;
+  color: var(--color-purple-text);
   box-shadow: 0 18px 30px -16px rgba(20, 184, 166, 0.75);
 }
 
@@ -479,7 +483,7 @@ textarea:focus-visible {
 
 .btn--secondary {
   background: rgba(255, 255, 255, 0.06);
-  color: var(--color-text);
+  color: var(--color-purple-text);
   border-color: var(--color-border);
 }
 
@@ -543,6 +547,7 @@ textarea:focus-visible {
 
 .business__name {
   margin: 0;
+  color: var(--color-purple-text);
   font-size: 1.3rem;
   line-height: 1.25;
   letter-spacing: -0.03em;
@@ -657,6 +662,7 @@ textarea:focus-visible {
 
 .business-popover__title {
   margin: 0 2.4rem 0.9rem 0;
+  color: var(--color-purple-text);
   font-size: 1.55rem;
   letter-spacing: -0.04em;
 }
