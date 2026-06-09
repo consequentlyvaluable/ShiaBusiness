@@ -442,13 +442,21 @@ const loadBusinesses = async () => {
   }
 };
 
-const toggleFormVisibility = (show) => {
+const scrollToFormSection = () => {
+  formSectionEl.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+const toggleFormVisibility = (show, { shouldNavigate = false } = {}) => {
   const shouldShow = typeof show === "boolean" ? show : formSectionEl.classList.contains("form--hidden");
 
   if (shouldShow) {
     formSectionEl.classList.remove("form--hidden");
     formSectionEl.setAttribute("aria-hidden", "false");
     toggleFormButton.setAttribute("aria-expanded", "true");
+
+    if (shouldNavigate) {
+      requestAnimationFrame(scrollToFormSection);
+    }
   } else {
     formSectionEl.classList.add("form--hidden");
     formSectionEl.setAttribute("aria-hidden", "true");
@@ -520,7 +528,9 @@ const init = async () => {
   searchInputEl.addEventListener("input", handleSearchInput);
   businessListEl.addEventListener("click", handleBusinessClick);
   businessListEl.addEventListener("keydown", handleBusinessKeydown);
-  toggleFormButton.addEventListener("click", () => toggleFormVisibility());
+  toggleFormButton.addEventListener("click", () => {
+    toggleFormVisibility(true, { shouldNavigate: true });
+  });
   cancelButton.addEventListener("click", () => {
     toggleFormVisibility(false);
   });
